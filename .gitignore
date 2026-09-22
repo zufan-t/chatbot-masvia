@@ -1,0 +1,22 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Sensitive Environment Variables (Never commit secrets!)
+.env
+
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Vector DB (Generated automatically during build by python ingest.py)
+chroma_db/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

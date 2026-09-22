@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: masvia-whatsapp-chatbot
+    runtime: python
+    region: singapore
+    plan: free
+    buildCommand: "pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu && pip install -r requirements.txt && python ingest.py"
+    startCommand: "uvicorn app:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.11
+      - key: BOT_NAME
+        value: Vivi
+      - key: OWNER_PHONE_NUMBER
+        value: "6289504573745"
+      - key: GROQ_MODEL
+        value: qwen/qwen3.8-27b
+      - key: TEMPERATURE
+        value: "0.2"
+      - key: TOP_K_RETRIEVAL
+        value: "3"
+      - key: CACHE_ENABLED
+        value: "true"
+      - key: MAX_CACHE_SIZE
+        value: "300"
+      - key: GROQ_API_KEY
+        sync: false
