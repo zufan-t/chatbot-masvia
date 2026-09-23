@@ -20,3 +20,7 @@ chroma_db/
 .idea/
 .DS_Store
 Thumbs.db
+*.png
+*.jpg
+*.jpeg
+text.txt
