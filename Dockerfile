@@ -24,7 +24,8 @@ COPY --chown=user . $HOME/app
 # Build Chroma DB vector store from knowledge base
 RUN python ingest.py
 
-# Hugging Face Spaces listens on port 7860
-EXPOSE 7860
+# Support dynamic port assignment (Koyeb/Render/HuggingFace)
+EXPOSE 7860 8000
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["sh", "-c", "uvicorn app:app --host 0.0.0.0 --port ${PORT:-7860}"]
+
